@@ -138,7 +138,7 @@ export default function Home() {
               className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/5 border border-border hover:border-accent/40 hover:bg-accent/5 transition-all text-sm font-medium">
               <Github size={16} /> GitHub
             </a>
-            <a href="https://linkedin.com/in/miguel-pires" target="_blank"
+            <a href="https://www.linkedin.com/in/devmiguelpires/" target="_blank"
               className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/5 border border-border hover:border-accent/40 hover:bg-accent/5 transition-all text-sm font-medium">
               <Linkedin size={16} /> LinkedIn
             </a>
@@ -395,7 +395,7 @@ export default function Home() {
               className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-accent text-white hover:bg-accent2 transition-all text-sm font-medium">
               <Mail size={15} /> E-mail
             </a>
-            <a href="https://linkedin.com/in/miguel-pires" target="_blank"
+            <a href="https://www.linkedin.com/in/devmiguelpires/" target="_blank"
               className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-border bg-white/5 hover:border-accent/40 transition-all text-sm font-medium">
               <Linkedin size={15} /> LinkedIn
             </a>
