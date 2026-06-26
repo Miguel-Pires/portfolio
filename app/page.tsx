@@ -185,12 +185,13 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, ease }}
             className="flex justify-center mb-7">
-            <div className="relative w-24 h-24 sm:w-28 sm:h-28">
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-violet-500 to-purple-700 blur-[10px] opacity-40" />
+            <div className="relative w-28 h-28 sm:w-32 sm:h-32">
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-violet-500 to-purple-700 blur-[14px] opacity-50" />
               <img
                 src="/photos/miguel-portrait.jpg"
                 alt="Miguel Pires"
-                className="relative w-full h-full rounded-full object-cover object-top border-2 border-violet-500/30 shadow-xl"
+                className="relative w-full h-full rounded-full object-cover border-2 border-violet-500/40 shadow-xl"
+                style={{ objectPosition: 'center 18%' }}
               />
             </div>
           </motion.div>
@@ -587,11 +588,12 @@ export default function Home() {
 
         <motion.div variants={fadeUp}
           className="relative card overflow-hidden p-8 sm:p-10">
-          {/* Photo bg — Santiago */}
-          <div className="absolute inset-y-0 right-0 w-64 hidden lg:block pointer-events-none">
-            <img src="/photos/miguel-santiago.jpg" alt=""
-              className="w-full h-full object-cover object-top opacity-[0.12]" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0e0e1a] via-[#0e0e1a]/60 to-transparent" />
+          {/* Photo — Santiago */}
+          <div className="absolute inset-y-0 right-0 w-72 hidden lg:block pointer-events-none overflow-hidden rounded-r-2xl">
+            <img src="/photos/miguel-santiago.jpg" alt="Miguel em Santiago"
+              className="w-full h-full object-cover object-center opacity-50" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0e0e1a] via-[#0e0e1a]/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e1a]/60 via-transparent to-transparent" />
           </div>
           {/* Decorative glow */}
           <div className="absolute -top-24 -right-24 w-80 h-80 bg-accent/[0.07] rounded-full blur-[100px] pointer-events-none" />
