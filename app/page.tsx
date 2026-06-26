@@ -157,7 +157,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.15 }}
             className="hidden sm:flex items-center gap-7 text-[13px] text-text2">
-            {['projetos','automações','stack','certificados','contato'].map(s => (
+            {['sobre','projetos','automações','stack','contato'].map(s => (
               <a key={s} href={`#${s}`} className="relative group capitalize hover:text-text transition-colors">
                 {s}
                 <span className="absolute -bottom-px left-0 w-0 h-px bg-accent rounded group-hover:w-full transition-all duration-300" />
@@ -280,6 +280,92 @@ export default function Home() {
       </section>
 
       <div className="section-divider my-0" />
+
+      {/* ── SOBRE MIM ──────────────────────────────────────────────────────── */}
+      <Section id="sobre" className="py-28">
+        <Heading eyebrow="Quem sou" title="Sobre mim" />
+
+        <motion.div variants={stagger(0.1)} className="grid lg:grid-cols-2 gap-14 items-start">
+
+          {/* Photos */}
+          <motion.div variants={fadeUp} className="relative flex gap-4 h-[520px]">
+            {/* Santiago — coluna principal */}
+            <div className="flex-1 rounded-2xl overflow-hidden border border-border shadow-xl">
+              <img src="/photos/miguel-santiago.jpg" alt="Miguel em Santiago, Chile"
+                className="w-full h-full object-cover object-center" />
+            </div>
+            {/* Portrait — coluna secundária com labels */}
+            <div className="flex flex-col gap-4 w-44">
+              <div className="flex-1 rounded-2xl overflow-hidden border border-border shadow-xl">
+                <img src="/photos/miguel-portrait.jpg" alt="Miguel Pires"
+                  className="w-full h-full object-cover"
+                  style={{ objectPosition: 'center 20%' }} />
+              </div>
+              {/* Info cards abaixo da foto */}
+              <div className="card p-4 text-center">
+                <p className="text-lg font-black text-text">16</p>
+                <p className="text-[10px] text-muted mt-0.5">anos</p>
+              </div>
+              <div className="card p-4 text-center">
+                <p className="text-[11px] font-semibold text-text leading-tight">Cerquilho</p>
+                <p className="text-[10px] text-muted mt-0.5">São Paulo · BR</p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Bio */}
+          <motion.div variants={fadeUp} className="flex flex-col gap-6">
+            {/* Pills */}
+            <div className="flex flex-wrap gap-2">
+              {[
+                { label: 'ETEC Cerquilho', color: 'bg-violet-500/10 text-violet-400 border-violet-500/20' },
+                { label: 'Técnico em Dev. Sistemas', color: 'bg-blue-500/10 text-blue-400 border-blue-500/20' },
+                { label: 'Conclusão 2027', color: 'bg-white/[0.05] text-text2 border-white/[0.08]' },
+              ].map(p => (
+                <span key={p.label} className={`inline-flex items-center px-3 py-1 rounded-full text-[11px] font-medium border ${p.color}`}>
+                  {p.label}
+                </span>
+              ))}
+            </div>
+
+            {/* Paragraphs */}
+            <div className="flex flex-col gap-4 text-[14px] text-text2 leading-7">
+              <p>
+                Olá! Meu nome é <span className="text-text font-semibold">Miguel Camargo Stevanato Pires</span>, tenho <span className="text-text font-semibold">16 anos</span> e moro em <span className="text-text font-semibold">Cerquilho, SP</span>. Sou estudante do Técnico em Desenvolvimento de Sistemas na ETEC, onde desenvolvo conhecimentos em programação, desenvolvimento web, banco de dados e engenharia de software por meio de projetos práticos.
+              </p>
+              <p>
+                Minha jornada na programação começou pela curiosidade de entender como grandes plataformas eram construídas. O que começou como interesse rapidamente se tornou uma paixão — desde então, venho estudando diariamente e aplicando esse conhecimento em projetos reais.
+              </p>
+              <p>
+                Trabalho principalmente com <span className="text-text font-medium">Next.js, React, TypeScript, Python e Supabase</span>, criando soluções modernas e escaláveis. Também desenvolvo fluxos de automação com <span className="text-text font-medium">n8n</span>, APIs e serviços em nuvem para eliminar tarefas repetitivas e integrar sistemas.
+              </p>
+              <p>
+                Ao longo dessa trajetória, desenvolvi plataformas para empresas, sistemas imobiliários, soluções de extração de dados, assistentes inteligentes e aplicações de gestão de negócios — participando de todas as etapas, da arquitetura ao deploy.
+              </p>
+              <p className="text-text2/70 italic border-l-2 border-accent/40 pl-4">
+                "Acredito que tecnologia só faz sentido quando resolve problemas reais. Por isso, busco criar software útil, intuitivo, de alta qualidade e capaz de gerar impacto positivo."
+              </p>
+            </div>
+
+            {/* Stats rápidos */}
+            <div className="grid grid-cols-3 gap-3 pt-2">
+              {[
+                { value: '5+', label: 'projetos entregues' },
+                { value: '2', label: 'clientes reais' },
+                { value: '1 ano', label: 'de experiência' },
+              ].map(s => (
+                <div key={s.label} className="card p-4 text-center">
+                  <p className="text-xl font-black text-text">{s.value}</p>
+                  <p className="text-[10px] text-muted mt-0.5 leading-tight">{s.label}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+        </motion.div>
+      </Section>
+
+      <div className="section-divider" />
 
       {/* ── PROJETOS ───────────────────────────────────────────────────────── */}
       <Section id="projetos" className="py-28">
