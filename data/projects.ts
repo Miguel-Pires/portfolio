@@ -8,6 +8,7 @@ export type Project = {
   subtitle: string
   url: string | null
   github: string | null
+  screenshot?: string
   description: string
   tagline: string
   overview: string[]
@@ -35,6 +36,7 @@ export const projects: Project[] = [
     badge: 'Cliente real',
     badgeColor: 'success',
     featured: true,
+    screenshot: '/screenshots/imoveis-barone.png',
 
     tagline: 'Sistema completo de gestão e publicação de imóveis, desenvolvido para cliente real e ativo em produção.',
 
@@ -118,6 +120,7 @@ export const projects: Project[] = [
     badge: 'IA aplicada',
     badgeColor: 'accent',
     featured: true,
+    screenshot: undefined,
 
     tagline: 'Plataforma de nutrição inteligente com GPT-4o para geração personalizada de planos alimentares.',
 
@@ -201,6 +204,7 @@ export const projects: Project[] = [
     badge: 'Python + Automação',
     badgeColor: 'warning',
     featured: true,
+    screenshot: '/screenshots/claro-dados.png',
 
     tagline: '184 páginas PDF → 444 linhas em planilha em aproximadamente 1 segundo.',
 
@@ -284,6 +288,7 @@ export const projects: Project[] = [
     badge: 'E-commerce',
     badgeColor: 'muted',
     featured: false,
+    screenshot: '/screenshots/agro-tatui.png',
 
     tagline: 'Catálogo de produtos com busca em tempo real e carrinho integrado ao WhatsApp.',
 
@@ -366,6 +371,7 @@ export const projects: Project[] = [
     badge: 'Frontend',
     badgeColor: 'muted',
     featured: false,
+    screenshot: '/screenshots/frameestate.png',
 
     tagline: 'Landing page de alto padrão com design system próprio, animações fluidas e componentes reutilizáveis.',
 
