@@ -9,6 +9,7 @@ export type Project = {
   url: string | null
   github: string | null
   screenshot?: string
+  gallery?: string[]
   description: string
   tagline: string
   overview: string[]
@@ -30,7 +31,7 @@ export const projects: Project[] = [
     title: 'Imóveis Barone',
     subtitle: 'Sistema web full stack para imobiliária',
     url: 'https://imoveisbarone.com',
-    github: null,
+    github: 'https://github.com/Miguel-Pires/barone-imoveis',
     year: '2024',
     status: 'Em produção',
     badge: 'Cliente real',
@@ -112,84 +113,107 @@ export const projects: Project[] = [
   {
     slug: 'nutria-ai',
     title: 'NutriaAI',
-    subtitle: 'Plataforma full stack com IA aplicada',
+    subtitle: 'SaaS de nutrição com IA — planos personalizados de 21 dias',
     url: 'https://nutria-ai.vercel.app',
-    github: null,
-    year: '2024',
-    status: 'Concluído',
-    badge: 'IA aplicada',
+    github: 'https://github.com/Miguel-Pires/NutriaAI',
+    year: '2025',
+    status: 'Ativo em produção',
+    badge: 'SaaS · IA',
     badgeColor: 'accent',
     featured: true,
-    screenshot: undefined,
+    screenshot: '/screenshots/nutria-ai.png',
+    gallery: [
+      '/screenshots/nutria-dashboard.png',
+      '/screenshots/nutria-analisar-refeicao.png',
+      '/screenshots/nutria-plano-alimentar.png',
+      '/screenshots/nutria-historico.png',
+      '/screenshots/nutria-treinos.png',
+      '/screenshots/nutria-receitas.png',
+      '/screenshots/nutria-progresso.png',
+      '/screenshots/nutria-ranking.png',
+    ],
 
-    tagline: 'Plataforma de nutrição inteligente com GPT-4o para geração personalizada de planos alimentares.',
+    tagline: 'Plataforma SaaS de nutrição com IA — planos personalizados gerados a partir de fotos de refeições e descrições em texto.',
 
     description:
-      'Plataforma com GPT-4o integrado para geração dinâmica de conteúdo nutricional. Fluxo de pagamento automatizado via webhook e dashboard com histórico de planos persistido.',
+      'SaaS completo com GPT-4o integrado. Reconhecimento de refeições por foto, plano de dieta de 21 dias, treinos personalizados, ranking gamificado, feed social e pagamento via Kiwify.',
 
     overview: [
-      'NutriaAI é uma plataforma web que usa inteligência artificial para gerar planos alimentares personalizados. O usuário informa seus objetivos, restrições e preferências — e o GPT-4o cria um plano completo em segundos.',
-      'O projeto foi construído com foco em experiência de usuário: fluxo de onboarding simples, geração de conteúdo com streaming em tempo real e dashboard para consultar planos anteriores. O pagamento é processado via webhook com confirmação automática.',
-      'A integração com a API da OpenAI usa streaming de tokens, então o usuário vê o plano sendo escrito em tempo real — como um nutricionista digitando ao vivo.',
+      'NutriaAI é um SaaS de nutrição que usa GPT-4o para gerar planos de dieta e treino personalizados de 21 dias. O usuário registra refeições por texto ou foto e a IA retorna a análise completa de macronutrientes — calorias, proteínas, carboidratos e gorduras — junto com recomendações práticas.',
+      'A plataforma é voltada para pessoas que querem precisão nutricional sem pagar por um nutricionista humano. Com 20 deployments em produção e usuários ativos, o projeto evoluiu de um MVP simples para um produto com comunidade, gamificação e feed social.',
+      'Todo o stack é serverless: Next.js 15 no Vercel, Supabase para auth + banco + storage, OpenAI para as análises e o plano alimentar, Kiwify para os pagamentos e Brevo para e-mails transacionais.',
     ],
 
     features: [
       {
-        icon: '🤖',
-        title: 'Geração com GPT-4o',
+        icon: '📸',
+        title: 'Análise por foto com GPT-4o',
         description:
-          'Planos alimentares personalizados gerados pelo GPT-4o com base em objetivo, peso, altura, restrições e preferências do usuário.',
+          'Tire uma foto do prato e receba os macros em segundos. O GPT-4o reconhece os alimentos, estima as porções e calcula calorias, proteínas, carboidratos e gorduras.',
       },
       {
-        icon: '⚡',
-        title: 'Streaming em tempo real',
+        icon: '🥗',
+        title: 'Plano alimentar de 21 dias',
         description:
-          'A resposta da IA é transmitida token a token via Server-Sent Events, dando feedback imediato ao usuário enquanto o plano é gerado.',
+          'Plano de dieta completo gerado com base no perfil do usuário (peso, objetivo, restrições). Cardápio dia a dia com ingredientes, modo de preparo e macros de cada refeição.',
+      },
+      {
+        icon: '💪',
+        title: 'Treinos personalizados',
+        description:
+          'Plano de treinos semanal alinhado com a dieta. Distribuição entre musculação, corrida e descanso ativo. Pontuação por treino concluído (+25 pts).',
+      },
+      {
+        icon: '📊',
+        title: 'Dashboard e histórico',
+        description:
+          'Painel com resumo do dia (calorias vs. meta, macros, refeições), gráfico de evolução de peso, histórico completo e analytics de calorias por dia.',
+      },
+      {
+        icon: '🏆',
+        title: 'Gamificação e ranking',
+        description:
+          'Sistema de pontos por ações (analisar refeição +15 pts, concluir treino +25 pts, streak diária +5 pts). Leaderboard com os top usuários da plataforma.',
+      },
+      {
+        icon: '👥',
+        title: 'Feed social e comunidade',
+        description:
+          'Feed onde usuários compartilham jornadas com fotos e textos motivacionais. Diretório de atletas com busca, seguir outros usuários e perfil público.',
       },
       {
         icon: '💳',
-        title: 'Pagamento com webhook',
+        title: 'Pagamento via Kiwify + webhook',
         description:
-          'Fluxo de pagamento integrado com confirmação automática via webhook — após o pagamento, o acesso é liberado instantaneamente.',
+          'Planos Starter, Pro e Elite. Pagamento processado pela Kiwify com confirmação automática via webhook — acesso liberado instantaneamente após a compra.',
       },
       {
-        icon: '📋',
-        title: 'Histórico persistido',
+        icon: '📧',
+        title: 'E-mail transacional com Brevo',
         description:
-          'Dashboard completo onde o usuário acessa todos os planos gerados anteriormente, com data, objetivo e conteúdo completo.',
-      },
-      {
-        icon: '🔒',
-        title: 'Autenticação e planos',
-        description:
-          'Sistema de autenticação com controle de acesso por plano. Usuários gratuitos têm limite de gerações; planos pagos têm acesso ilimitado.',
-      },
-      {
-        icon: '📱',
-        title: 'Design responsivo',
-        description:
-          'Interface totalmente responsiva, acessível em desktop e mobile com experiência consistente em todos os dispositivos.',
+          'Templates de e-mail com identidade visual da NutriaAI para boas-vindas, confirmação e redefinição de senha. Enviados via Brevo com rastreamento de abertura.',
       },
     ],
 
     howItWorks:
-      'O usuário passa por um formulário de onboarding com dados pessoais e objetivos. Ao confirmar, a aplicação monta um prompt estruturado e envia para a API da OpenAI (GPT-4o). A resposta é transmitida via streaming diretamente para o browser usando Server-Sent Events, e o plano é renderizado token a token em tempo real. Após a geração, o plano é salvo no PostgreSQL vinculado ao usuário. O fluxo de pagamento usa webhooks para confirmar transações e liberar acesso automaticamente, sem intervenção manual.',
+      'O usuário passa pelo onboarding informando peso, objetivo, restrições e nível de atividade. A IA calcula as metas de macros e gera o plano de 21 dias com um único prompt estruturado para o GPT-4o.\n\nPara registrar refeições, o usuário descreve em texto ou tira uma foto. A imagem é enviada para o GPT-4o Vision que identifica os alimentos e retorna os macros. Os dados ficam no Supabase (PostgreSQL) com RLS — cada usuário só acessa seus próprios registros.\n\nO sistema de pagamento usa Kiwify: ao completar a compra, um webhook confirma a transação e o middleware de auth libera as rotas pagas automaticamente. O e-mail de boas-vindas é enviado via Brevo.',
 
     metrics: [
+      { label: 'Deployments', value: '20+' },
       { label: 'Modelo de IA', value: 'GPT-4o' },
-      { label: 'Geração em', value: '<5s' },
-      { label: 'Integração', value: 'Webhook' },
-      { label: 'Histórico', value: 'Persistido' },
+      { label: 'Telas', value: '12+' },
+      { label: 'Stack', value: 'Serverless' },
     ],
 
-    stack: ['Next.js', 'TypeScript', 'OpenAI GPT-4o', 'PostgreSQL', 'Webhooks'],
+    stack: ['Next.js 15', 'TypeScript', 'OpenAI GPT-4o', 'Supabase', 'Kiwify', 'Brevo', 'Framer Motion'],
     stackDetails: [
-      { name: 'Next.js 14', role: 'App Router com Route Handlers para streaming' },
-      { name: 'OpenAI API', role: 'GPT-4o com streaming de tokens' },
-      { name: 'PostgreSQL', role: 'Armazenamento de usuários e histórico de planos' },
-      { name: 'Webhooks', role: 'Confirmação automática de pagamentos' },
-      { name: 'TypeScript', role: 'Type safety nas chamadas à API da OpenAI' },
-      { name: 'Vercel', role: 'Deploy com suporte a Edge Functions' },
+      { name: 'Next.js 15', role: 'App Router, Route Handlers, middleware de auth' },
+      { name: 'OpenAI API (GPT-4o)', role: 'Análise por foto, geração de plano alimentar e treinos' },
+      { name: 'Supabase', role: 'PostgreSQL + Auth + Storage + RLS por usuário' },
+      { name: 'Kiwify', role: 'Checkout e webhooks de confirmação de pagamento' },
+      { name: 'Brevo', role: 'E-mails transacionais com templates customizados' },
+      { name: 'Tailwind CSS + Framer Motion', role: 'Design system e animações de interface' },
+      { name: 'Vercel', role: 'Deploy serverless com 20+ deployments em produção' },
     ],
   },
 
@@ -282,7 +306,7 @@ export const projects: Project[] = [
     title: 'Agropecuária Tatuí',
     subtitle: 'E-commerce com catálogo e carrinho WhatsApp',
     url: 'https://agrotatui.vercel.app',
-    github: null,
+    github: 'https://github.com/Miguel-Pires/Agro-Tatui',
     year: '2025',
     status: 'Concluído',
     badge: 'E-commerce',
@@ -365,7 +389,7 @@ export const projects: Project[] = [
     title: 'FrameEstate',
     subtitle: 'Landing page institucional com design system próprio',
     url: 'https://frameestate.vercel.app',
-    github: null,
+    github: 'https://github.com/Miguel-Pires/frameestate',
     year: '2024',
     status: 'Concluído',
     badge: 'Frontend',
