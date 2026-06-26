@@ -180,11 +180,26 @@ export default function Home() {
 
         <motion.div style={{ y: heroY, opacity: heroOp }} className="relative z-10 text-center max-w-3xl">
 
+          {/* Avatar */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, ease }}
+            className="flex justify-center mb-7">
+            <div className="relative w-24 h-24 sm:w-28 sm:h-28">
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-violet-500 to-purple-700 blur-[10px] opacity-40" />
+              <img
+                src="/photos/miguel-portrait.jpg"
+                alt="Miguel Pires"
+                className="relative w-full h-full rounded-full object-cover object-top border-2 border-violet-500/30 shadow-xl"
+              />
+            </div>
+          </motion.div>
+
           {/* Status pill */}
           <motion.div
             initial={{ opacity: 0, y: 12, scale: 0.9 }} animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.5, ease }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/[0.07] text-emerald-400 text-xs font-medium mb-10">
+            transition={{ duration: 0.5, delay: 0.1, ease }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/[0.07] text-emerald-400 text-xs font-medium mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
             Disponível para estágio e posições júnior
           </motion.div>
@@ -193,9 +208,16 @@ export default function Home() {
           <motion.h1
             initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.15, ease }}
-            className="text-6xl sm:text-8xl font-black tracking-tight leading-[1.0] mb-5">
+            className="text-6xl sm:text-8xl font-black tracking-tight leading-[1.0] mb-3">
             <span className="gradient-text">Miguel<br />Pires</span>
           </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+            transition={{ delay: 0.25 }}
+            className="text-[11px] text-muted font-mono tracking-widest mb-5">
+            Miguel Camargo Stevanato Pires
+          </motion.p>
 
           {/* Subtitle */}
           <motion.p
@@ -250,7 +272,7 @@ export default function Home() {
         {/* Scroll cue */}
         <motion.a href="#projetos"
           initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}
-          className="absolute bottom-8 z-10 flex flex-col items-center gap-1 text-muted hover:text-accent-l transition-colors">
+          className="relative z-10 mt-10 flex flex-col items-center gap-1 text-muted hover:text-accent-l transition-colors">
           <span className="text-[10px] font-mono tracking-widest">SCROLL</span>
           <ChevronDown size={16} className="animate-bounce" />
         </motion.a>
@@ -565,6 +587,12 @@ export default function Home() {
 
         <motion.div variants={fadeUp}
           className="relative card overflow-hidden p-8 sm:p-10">
+          {/* Photo bg — Santiago */}
+          <div className="absolute inset-y-0 right-0 w-64 hidden lg:block pointer-events-none">
+            <img src="/photos/miguel-santiago.jpg" alt=""
+              className="w-full h-full object-cover object-top opacity-[0.12]" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0e0e1a] via-[#0e0e1a]/60 to-transparent" />
+          </div>
           {/* Decorative glow */}
           <div className="absolute -top-24 -right-24 w-80 h-80 bg-accent/[0.07] rounded-full blur-[100px] pointer-events-none" />
           <div className="absolute -bottom-16 -left-16 w-60 h-60 bg-blue/[0.05] rounded-full blur-[80px] pointer-events-none" />
