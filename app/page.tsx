@@ -395,6 +395,26 @@ export default function Home() {
                 </span>
               </div>
 
+              {/* Screenshot único */}
+              {a.screenshot && !a.gallery && (
+                <div className="rounded-xl overflow-hidden border border-border/60 bg-bg/60">
+                  <img src={a.screenshot} alt={a.title}
+                    className="w-full object-cover object-center" />
+                </div>
+              )}
+
+              {/* Galeria 2 imgs (Barone) */}
+              {a.gallery && (
+                <div className="grid grid-cols-2 gap-2">
+                  {a.gallery.map((img, i) => (
+                    <div key={i} className="rounded-xl overflow-hidden border border-border/60 bg-bg/60">
+                      <img src={img} alt={`${a.title} ${i + 1}`}
+                        className="w-full object-cover object-center" />
+                    </div>
+                  ))}
+                </div>
+              )}
+
               <p className="text-[13px] text-text2 leading-relaxed">{a.description}</p>
 
               {/* Steps */}

@@ -463,6 +463,8 @@ export type Automation = {
   stack: string[]
   highlight: string
   details: string[]
+  screenshot?: string
+  gallery?: string[]
 }
 
 export const automations: Automation[] = [
@@ -470,6 +472,7 @@ export const automations: Automation[] = [
     title: 'Bot-Barone',
     subtitle: 'WhatsApp AI Chatbot',
     nodes: 40,
+    screenshot: '/screenshots/n8n-bot-barone.png',
     description:
       'Chatbot conversacional completo com IA. Recebe mensagens via WhatsApp, processa com GPT-4o, mantém memória da conversa via Redis e aciona APIs externas conforme a intenção.',
     stack: ['n8n', 'OpenAI GPT-4o', 'Redis', 'WAHA', 'HTTP Requests'],
@@ -487,6 +490,10 @@ export const automations: Automation[] = [
     title: 'Barone — Lembrete & Agendamento',
     subtitle: 'Automação em produção',
     nodes: 13,
+    gallery: [
+      '/screenshots/n8n-barone-confirmacao.png',
+      '/screenshots/n8n-barone-lembrete.png',
+    ],
     description:
       'Dois workflows ativos em produção: notifica clientes ao agendar visitas e envia lembretes automáticos 1h antes. Dados lidos em tempo real do Google Sheets.',
     stack: ['n8n', 'Google Sheets', 'WAHA', 'JavaScript'],
@@ -504,6 +511,7 @@ export const automations: Automation[] = [
     title: 'Leitura Dados Claro',
     subtitle: 'Pipeline WhatsApp → PDF → Excel',
     nodes: 13,
+    screenshot: '/screenshots/n8n-claro-dados.png',
     description:
       'Usuário envia fatura PDF pelo WhatsApp → n8n aciona a API Flask → sistema extrai centenas de linhas → Excel formatado retorna pelo WhatsApp em segundos.',
     stack: ['n8n', 'WAHA', 'Flask API', 'Python'],
