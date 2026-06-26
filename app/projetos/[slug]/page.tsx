@@ -172,7 +172,9 @@ export default function ProjetoPage() {
                   <div className="w-3 h-3 rounded-full bg-emerald-500/50" />
                 </div>
                 <div className="flex-1 bg-[#07070f]/60 border border-white/[0.065] rounded-md px-3 py-1 min-w-0">
-                  <span className="text-[11px] text-[#4a4766]/70 font-mono">{p.url ?? 'github.com/Miguel-Pires'}</span>
+                  <span className="text-[11px] text-[#4a4766]/70 font-mono">
+                    {(p.url ?? p.github ?? 'github.com/Miguel-Pires').replace('https://', '')}
+                  </span>
                 </div>
               </div>
               <img src={p.screenshot} alt={p.title} className="w-full object-cover object-top" />

@@ -276,7 +276,7 @@ export default function Home() {
               <div className="p-3 pb-0">
                 <BrowserMockup
                   src={p.screenshot}
-                  domain={p.url ? p.url.replace('https://', '') : 'github.com'}
+                  domain={(p.url ?? p.github ?? 'github.com/Miguel-Pires').replace('https://', '')}
                   alt={p.title}
                 />
               </div>
@@ -333,7 +333,7 @@ export default function Home() {
               <div className="p-3 pb-0">
                 <BrowserMockup
                   src={p.screenshot}
-                  domain={p.url ? p.url.replace('https://', '') : 'github.com'}
+                  domain={(p.url ?? p.github ?? 'github.com/Miguel-Pires').replace('https://', '')}
                   alt={p.title}
                 />
               </div>

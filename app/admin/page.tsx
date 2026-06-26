@@ -1,7 +1,15 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { supabase, type Certificate } from '@/lib/supabase'
+import { createClient } from '@supabase/supabase-js'
+import type { Certificate } from '@/lib/supabase'
+
+function getSB() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  if (!url || !key) return null
+  return createClient(url, key)
+}
 import { Upload, Trash2, Lock, LogOut, Plus, X } from 'lucide-react'
 
 const ADMIN_KEY = 'mp_admin_auth'
@@ -22,7 +30,9 @@ export default function AdminPage() {
   }, [])
 
   async function fetchCerts() {
-    const { data } = await supabase.from('certificates').select('*').order('created_at', { ascending: false })
+    const sb = getSB()
+    if (!sb) { setCerts([]); return }
+    const { data } = await sb.from('certificates').select('*').order('created_at', { ascending: false })
     setCerts(data ?? [])
   }
 
@@ -50,14 +60,16 @@ export default function AdminPage() {
     }
     setUploading(true); setError('')
     try {
+      const sb = getSB()
+      if (!sb) throw new Error('Supabase não configurado. Adicione as variáveis de ambiente.')
       const ext  = file.name.split('.').pop()
       const path = `${Date.now()}.${ext}`
-      const { error: upErr } = await supabase.storage.from('certificates').upload(path, file)
+      const { error: upErr } = await sb.storage.from('certificates').upload(path, file)
       if (upErr) throw upErr
 
-      const { data: { publicUrl } } = supabase.storage.from('certificates').getPublicUrl(path)
+      const { data: { publicUrl } } = sb.storage.from('certificates').getPublicUrl(path)
 
-      const { error: dbErr } = await supabase.from('certificates').insert({
+      const { error: dbErr } = await sb.from('certificates').insert({
         title: form.title, issuer: form.issuer, date: form.date, image_url: publicUrl,
       })
       if (dbErr) throw dbErr
@@ -74,9 +86,11 @@ export default function AdminPage() {
 
   async function deleteCert(id: string, imageUrl: string) {
     if (!confirm('Remover este certificado?')) return
+    const sb = getSB()
+    if (!sb) return
     const path = imageUrl.split('/').pop()!
-    await supabase.storage.from('certificates').remove([path])
-    await supabase.from('certificates').delete().eq('id', id)
+    await sb.storage.from('certificates').remove([path])
+    await sb.from('certificates').delete().eq('id', id)
     fetchCerts()
   }
 
